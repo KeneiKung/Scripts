@@ -1,3 +1,6 @@
+getgenv().Config = {
+    FastAttack = true
+}
 local plr = game.Players.LocalPlayer
 local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
 local CbFw2 = CbFw[2]
@@ -62,5 +65,20 @@ local E = setmetatable({}, {
         return "The table has locked!"
     end
 })
+
+local cac
+if SuperFastMode then 
+	cac=task.wait
+else
+	cac=wait
+end
+
+coroutine.wrap(function()
+    while cac() do
+        if getgenv().Config.FastAttack then
+            coroutine.resume(coroutine.create(E.attack))
+        end
+    end
+end)()
 
 return E
