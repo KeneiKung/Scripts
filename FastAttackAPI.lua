@@ -56,6 +56,10 @@ local E = setmetatable({}, {
                 end
             end
         end
+    end,
+        
+    __tostring = function()
+        return "The table has locked!"
     end
 })
 
