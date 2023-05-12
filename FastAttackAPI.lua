@@ -66,19 +66,4 @@ local E = setmetatable({}, {
     end
 })
 
-local cac
-if SuperFastMode then 
-	cac=task.wait
-else
-	cac=wait
-end
-
-coroutine.wrap(function()
-    while cac() do
-        if getgenv().Config.FastAttack then
-            coroutine.resume(coroutine.create(E.attack))
-        end
-    end
-end)()
-
 return E
