@@ -1,6 +1,4 @@
-getgenv().Config = {
-	FastAttack = true
-}
+local FastAttack = true
 local v1 = game.Players.LocalPlayer
 local v2 = debug.getupvalues(require(v1.PlayerScripts.CombatFramework))
 local v3 = v2[2]
@@ -65,7 +63,7 @@ end
 
 coroutine.wrap(function()
 	while task.wait() do
-		if getgenv().Config.FastAttack then
+		if FastAttack then
 			coroutine.resume(coroutine.create(G_2_))
 		end
 	end
